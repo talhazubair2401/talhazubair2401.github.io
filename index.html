@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talha Zubair · Business software for schools and travel agencies</title>
+<meta name="description" content="Talha Zubair (Nexora Software & Web Solutions) builds offline-first business software for schools, travel agencies and small businesses in Pakistan: fees, bookings, receipts and accounts.">
+<meta property="og:title" content="Talha Zubair · Business software that replaces paper registers">
+<meta property="og:description" content="Fee, booking and accounting systems for Pakistani schools and travel agencies. Try the live demos.">
+<meta property="og:image" content="https://talhazubair2401.github.io/assets/sp-dashboard.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318213A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='%23EEF3EA' text-anchor='middle'%3ETZ%3C/text%3E%3C/svg%3E">
+<style>
+@font-face { font-family: "Bricolage Grotesque"; src: url("assets/fonts/bricolage.woff") format("woff"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Caveat"; src: url("assets/fonts/caveat.woff") format("woff"); font-weight: 400 700; font-display: swap; }
+:root {
+  --paper: #EEF3EA;
+  --rule: #D3DFD0;
+  --ink: #18213A;
+  --ink-2: #4A5470;
+  --stamp: #5B3E9E;
+  --margin: #C8463D;
+  --white: #FFFFFF;
+  --line: 32px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px) var(--line));
+  font: 17px/1.6 "Bricolage Grotesque", system-ui, sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+/* the red margin line of a register, down the whole page on wide screens */
+body::before {
+  content: ""; position: fixed; top: 0; bottom: 0; left: max(24px, calc(50% - 640px)); width: 2px;
+  background: var(--margin); opacity: .55; pointer-events: none; z-index: 0;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid var(--stamp); outline-offset: 3px; border-radius: 4px; }
+.wrap { position: relative; z-index: 1; width: min(1180px, 100% - 32px); margin: 0 auto; padding-left: clamp(0px, 4vw, 48px); }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--white); padding: 8px 14px; z-index: 10; }
+.skip:focus { left: 16px; }
+
+/* ---------- header ---------- */
+.top { display: flex; align-items: center; gap: 24px; padding: 22px 0; }
+.brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.15; }
+.brand b { font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.brand span { font-size: 13px; color: var(--ink-2); }
+.nav { margin-left: auto; display: flex; gap: 22px; align-items: center; }
+.nav a { text-decoration: none; font-weight: 500; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.btn { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 2px solid var(--ink); transition: transform .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-line { background: var(--white); color: var(--ink); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.nav .btn { padding: 9px 16px; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 56px 0 88px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 0 0 22px; font-variation-settings: "opsz" 96; }
+.hero p.lead { font-size: 19px; color: var(--ink-2); max-width: 34em; margin: 0 0 30px; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif; direction: rtl; }
+
+.proof { position: relative; height: 470px; }
+.register {
+  position: absolute; left: 0; top: 0; width: 78%; padding: 18px 22px 22px 56px; border-radius: 6px;
+  background-color: #F8FAF5;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 39px, #C9D8E6 39px 40px);
+  background-position: 0 50px;
+  box-shadow: 0 1px 0 #d9e2d6, 0 12px 30px -18px rgba(24,33,58,.45);
+  transform: rotate(-2.2deg);
+}
+.register::before { content: ""; position: absolute; top: 0; bottom: 0; left: 40px; width: 2px; background: var(--margin); opacity: .7; }
+.register h3 { font: 700 15px/1 "Bricolage Grotesque", sans-serif; margin: 0 0 14px; color: var(--ink-2); }
+.register ol { list-style: none; margin: 0; padding: 0; font: 500 24px/40px "Caveat", cursive; color: #233a6b; }
+.register li { white-space: nowrap; overflow: hidden; text-overflow: clip; }
+.register s { text-decoration-color: var(--margin); text-decoration-thickness: 2px; }
+.register .q { color: var(--margin); }
+
+.receipt {
+  position: absolute; right: 0; bottom: 0; width: 64%; background: var(--white); border-radius: 4px; padding: 22px 24px 26px;
+  box-shadow: 0 24px 50px -24px rgba(24,33,58,.55), 0 2px 0 rgba(24,33,58,.06); transform: rotate(1.6deg);
+  font-size: 14px;
+}
+.receipt::after { /* torn bottom edge */
+  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 10px;
+  background: radial-gradient(circle at 8px -2px, transparent 8px, var(--white) 8.5px) 0 0 / 16px 10px repeat-x;
+}
+.receipt .hd { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 12px; }
+.receipt .hd b { font-size: 15px; }
+.receipt .hd span { font-size: 12px; color: var(--ink-2); }
+.receipt dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; }
+.receipt dt { color: var(--ink-2); }
+.receipt dd { margin: 0; font-weight: 500; text-align: right; }
+.receipt .amt { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding: 10px 12px; border: 2px solid var(--ink); border-radius: 6px; }
+.receipt .amt b { font-size: 22px; font-variant-numeric: tabular-nums; }
+.receipt .words { font-size: 12px; font-style: italic; color: var(--ink-2); margin-top: 6px; }
+.stamp {
+  position: relative; flex: none; margin-right: 6px; padding: 5px 12px 3px; border: 4px solid var(--stamp); border-radius: 10px;
+  color: var(--stamp); font-weight: 800; font-size: 28px; letter-spacing: .08em; line-height: 1; transform: rotate(-12deg);
+  mix-blend-mode: multiply; opacity: .9;
+  -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgba(0,0,0,.75) 75%, #000 100%);
+}
+.stamp small { display: block; font-size: 11px; letter-spacing: .12em; text-align: center; margin-top: 3px; font-weight: 700; }
+@media (prefers-reduced-motion: no-preference) {
+  .stamp { animation: thump .5s cubic-bezier(.2,.9,.3,1.3) 1s both; }
+  @keyframes thump { 0% { opacity: 0; transform: rotate(-12deg) scale(2.4); } 70% { opacity: .95; transform: rotate(-12deg) scale(.94); } 100% { opacity: .9; transform: rotate(-12deg) scale(1); } }
+}
+.receipt .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-top: 16px; }
+.receipt .sig { flex: 1; border-top: 1px solid var(--ink-2); padding-top: 4px; font-size: 11px; color: var(--ink-2); max-width: 9.5em; }
+.arrow-note { position: absolute; left: 6%; top: 68%; font: 700 22px/1.1 "Caveat", cursive; color: var(--stamp); transform: rotate(-6deg); }
+.arrow-note svg { display: block; width: 70px; height: 46px; margin: 4px 0 0 30px; }
+
+/* ---------- sections ---------- */
+section { padding: 64px 0; }
+.sec-title { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; margin: 0 0 12px; }
+.sec-lead { color: var(--ink-2); max-width: 40em; margin: 0 0 40px; font-size: 18px; }
+
+/* ---------- case studies ---------- */
+.case { background: var(--white); border-radius: 18px; padding: clamp(22px, 3.4vw, 44px); margin-bottom: 40px; box-shadow: 0 1px 0 #d9e2d6; }
+.case-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 30px; align-items: flex-end; margin-bottom: 26px; }
+.case h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.1; letter-spacing: -.025em; margin: 0 0 8px; font-weight: 800; }
+.case .one { font-size: 18px; color: var(--ink-2); margin: 0; max-width: 36em; }
+.case .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.shot { border-radius: 12px; overflow: hidden; border: 1px solid #dfe5dc; background: #f6f8f4; }
+.shot img { width: 100%; height: auto; }
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+.thumbs figure { margin: 0; }
+.thumbs img { height: auto; border-radius: 10px; border: 1px solid #dfe5dc; aspect-ratio: 16/10; object-fit: cover; object-position: top center; width: 100%; }
+.thumbs figcaption { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
+.story { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 34px; margin-top: 34px; }
+.story h4 { font-size: 17px; margin: 0 0 8px; }
+.story p, .story ul { margin: 0; color: var(--ink-2); font-size: 16px; }
+.story ul { padding-left: 18px; }
+.story li { margin-bottom: 6px; }
+.story li b { color: var(--ink); font-weight: 600; }
+.tech { margin-top: 28px; padding-top: 18px; border-top: 1px dashed #cfd8cc; font-size: 15px; color: var(--ink-2); }
+.tech b { color: var(--ink); }
+
+/* ---------- process ---------- */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding-top: 52px; }
+.steps li::before {
+  content: counter(s); position: absolute; top: 0; left: 0; width: 38px; height: 38px; border-radius: 50%;
+  border: 2px solid var(--stamp); color: var(--stamp); font-weight: 800; display: grid; place-items: center;
+}
+.steps h3 { font-size: 19px; margin: 0 0 6px; }
+.steps p { margin: 0; color: var(--ink-2); font-size: 16px; }
+
+/* ---------- about ---------- */
+.about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+.about p { margin: 0 0 14px; max-width: 36em; }
+.facts { list-style: none; margin: 0; padding: 0; }
+.facts li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 9em 1fr; gap: 12px; }
+.facts li span:first-child { color: var(--ink-2); }
+
+/* ---------- contact ---------- */
+.contact { background: var(--ink); color: var(--paper); border-radius: 22px; padding: clamp(28px, 5vw, 60px); display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+.contact .sec-title { color: var(--white); }
+.contact p { color: #c9d1e4; margin: 0; max-width: 32em; font-size: 18px; }
+.links { display: grid; gap: 12px; }
+.links a { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); text-decoration: none; }
+.links a:hover { background: rgba(255,255,255,.13); }
+.links a.wa { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.links svg { width: 22px; height: 22px; flex: none; }
+.links b { display: block; font-size: 16px; }
+.links small { display: block; font-size: 14px; opacity: .8; }
+footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; }
+  .proof { height: 420px; max-width: 560px; }
+  .story { grid-template-columns: 1fr; gap: 22px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .about, .contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  body::before { display: none; }
+  .wrap { padding-left: 0; }
+  .nav a:not(.btn) { display: none; }
+  .proof { height: auto; }
+  .register { position: relative; width: 94%; padding-left: 46px; }
+  .receipt { position: relative; margin: -34px 0 0 auto; }
+  .register::before { left: 32px; }
+  .register ol { font-size: 20px; }
+  .receipt { width: 88%; }
+  .arrow-note { display: none; }
+  .thumbs { grid-template-columns: 1fr 1fr; }
+  .thumbs figure:last-child { display: none; }
+  .steps { grid-template-columns: 1fr; }
+  .facts li { grid-template-columns: 1fr; gap: 2px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<div class="wrap">
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Talha Zubair, home"><b>Talha Zubair</b><span>Nexora Software &amp; Web Solutions</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#process">How I work</a>
+    <a href="#about">About</a>
+    <a class="btn btn-ink" href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <div>
+    <h1 id="hero-title">Your office runs on paper registers. I turn them into software.</h1>
+    <p class="lead">I'm Talha Zubair. I build fee, booking and accounting systems for schools, travel agencies and small businesses in Pakistan. They install on your own computer, print proper receipts, and keep working when the internet doesn't.</p>
+    <div class="ctas">
+      <a class="btn btn-ink" href="https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Message me on WhatsApp</a>
+      <a class="btn btn-line" href="#work">See my work</a>
+    </div>
+  </div>
+
+  <div class="proof" aria-label="A handwritten register entry next to the printed receipt the software makes">
+    <div class="register" aria-hidden="true">
+      <h3>Fee register, October</h3>
+      <ol>
+        <li>Ayesha · Oct fee · 2500 <s>1250</s> <span class="q">paid?</span></li>
+        <li>Hamza · Class 7 · 4500 <span class="q">??</span></li>
+        <li>Ahmed R. · Dubai ticket · 172,000</li>
+        <li><s>Fatima · 3000</s> <span class="q">next pg</span></li>
+      </ol>
+    </div>
+    <div class="arrow-note" aria-hidden="true">becomes
+      <svg viewBox="0 0 70 46" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 6c18 2 36 12 52 32"/><path d="M44 36l12 3 2-12"/></svg>
+    </div>
+    <div class="receipt">
+      <div class="hd"><b>Fee receipt</b><span>R-2026-00834</span></div>
+      <dl>
+        <dt>Student</dt><dd>Ayesha Naeem</dd>
+        <dt>Class</dt><dd>Play Group</dd>
+        <dt>For</dt><dd>October 2026</dd>
+      </dl>
+      <div class="amt"><span>Received</span><b>Rs. 2,500</b></div>
+      <div class="words">Two thousand five hundred rupees only</div>
+      <div class="foot"><span class="sig">Received by office clerk</span><div class="stamp" aria-hidden="true">PAID<small>04-10-2026</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" aria-labelledby="work-title">
+  <h2 class="sec-title" id="work-title">Work</h2>
+  <p class="sec-lead">Two complete systems you can try right now. Both demos sign you in with one click and use made-up data, so press anything.</p>
+
+  <article class="case" aria-labelledby="sp-title">
+    <div class="case-head">
+      <div>
+        <h3 id="sp-title">Nexora SafarPro</h3>
+        <p class="one">One system for the whole travel agency: bookings, tickets, visas, Umrah groups, tours and accounts. It works even when the internet doesn't.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-ink" href="https://nexoraservices90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
+        <a class="btn btn-line" href="https://github.com/talhazubair2401/nexora-safarpro" target="_blank" rel="noopener">See the code</a>
+      </div>
+    </div>
+    <a class="shot" href="assets/sp-dashboard.jpg" target="_blank" rel="noopener"><img src="assets/sp-dashboard.jpg" width="1400" height="875" alt="SafarPro dashboard with net sales, collections, gross profit, receivables and a six-month revenue chart" loading="lazy"></a>
+    <div class="thumbs">
+      <figure><a href="assets/sp-booking.jpg" target="_blank" rel="noopener"><img src="assets/sp-booking.jpg" width="1400" height="875" alt="A tour booking with selling price, amount paid, outstanding balance and timeline" loading="lazy"></a><figcaption>Booking with balance and timeline</figcaption></figure>
+      <figure><a href="assets/sp-umrah.jpg" target="_blank" rel="noopener"><img src="assets/sp-umrah.jpg" width="1400" height="875" alt="Umrah group manifest listing pilgrims with passport, visa, room and payment status" loading="lazy"></a><figcaption>Umrah group manifest</figcaption></figure>
+      <figure><a href="assets/sp-receipt.jpg" target="_blank" rel="noopener"><img src="assets/sp-receipt.jpg" width="1400" height="875" alt="Payment receipt with the amount written in words" loading="lazy"></a><figcaption>Receipt that can't be edited</figcaption></figure>
+    </div>
+    <div class="story">
+      <div>
+        <h4>The challenge</h4>
+        <p>Agencies run on WhatsApp chats, registers and Excel. The owner can't quickly see who still owes money, which supplier is due this week, which pilgrims are missing passports, or whether the month made a profit.</p>
+      </div>
+      <div>
+        <h4>What I built</h4>
+        <ul>
+          <li><b>Runs on the agency's own PC</b>, fully offline, with one-click verified backups to a USB drive.</li>
+          <li><b>Receipts can't be quietly changed.</b> Mistakes are reversed, never edited, so the books stay honest.</li>
+          <li><b>Umrah groups</b> with every pilgrim's passport, visa, room and payment in one list.</li>
+          <li><b>Staff logins with limits.</b> A receptionist can't see accounts or take payments.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The result</h4>
+        <p>One dashboard shows sales, collections, overdue customers and supplier dues for every branch, with profit and loss calculated from the same records.</p>
+      </div>
+    </div>
+    <p class="tech"><b>For developers:</b> Python, Django and SQLite with vanilla JavaScript. A double-entry ledger engine, server-side permission checks on every action, protection against double submissions, and 39 automated tests.</p>
+  </article>
+
+  <article class="case" aria-labelledby="sc-title">
+    <div class="case-head">
+      <div>
+        <h3 id="sc-title">Nexora School Office</h3>
+        <p class="one">Fees, receipts, attendance, results and certificates for a school office. First built for a real private school.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-ink" href="https://nexoraschool90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
+        <a class="btn btn-line" href="https://github.com/talhazubair2401/nexora-school-office" target="_blank" rel="noopener">See the code</a>
+      </div>
+    </div>
+    <a class="shot" href="assets/sc-dashboard.jpg" target="_blank" rel="noopener"><img src="assets/sc-dashboard.jpg" width="1400" height="875" alt="School Office dashboard with students, fees received, fees still to collect, profit and colour-coded classes" loading="lazy"></a>
+    <div class="thumbs">
+      <figure><a href="assets/sc-receipt.jpg" target="_blank" rel="noopener"><img src="assets/sc-receipt.jpg" width="1400" height="875" alt="Fee receipt with a PAID stamp" loading="lazy"></a><figcaption>Fee receipt with PAID stamp</figcaption></figure>
+      <figure><a href="assets/sc-certificate.jpg" target="_blank" rel="noopener"><img src="assets/sc-certificate.jpg" width="1400" height="1501" alt="Experience certificate printed on the school letterhead in English and Urdu" loading="lazy"></a><figcaption>Certificate on letterhead</figcaption></figure>
+      <figure><a href="assets/sc-profit.jpg" target="_blank" rel="noopener"><img src="assets/sc-profit.jpg" width="1400" height="875" alt="Profit for the school year with a monthly chart" loading="lazy"></a><figcaption>Profit for the school year</figcaption></figure>
+    </div>
+    <div class="story">
+      <div>
+        <h4>The challenge</h4>
+        <p>Fees lived in a register, receipts were written by hand and certificates typed in Word. At month end nobody knew exactly who owed fees, and nothing stopped someone from quietly lowering a fee.</p>
+      </div>
+      <div>
+        <h4>What I built</h4>
+        <ul>
+          <li><b>A month's fees for every student in one click</b>, part payments, receipts and challans with every unpaid month.</li>
+          <li><b>Attendance and result cards</b> with grade and class position worked out automatically.</li>
+          <li><b>Certificates in English and Urdu</b> on the school letterhead.</li>
+          <li><b>Only the principal</b> can change a fee, delete anything or see salaries and profit. Blocked attempts are logged.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The result</h4>
+        <p>Receipts, challans, result cards and certificates print in seconds, and the principal sees who collected what and what the school earned. The demo uses a fictional school; the real school's records stay private.</p>
+      </div>
+    </div>
+    <p class="tech"><b>For developers:</b> Python, Django, SQLite, Bootstrap and Chart.js. Access rules enforced in middleware, transaction-safe serial numbers, print-ready layouts, and 56 automated tests.</p>
+  </article>
+</section>
+
+<section id="process" aria-labelledby="process-title">
+  <h2 class="sec-title" id="process-title">How a project works</h2>
+  <p class="sec-lead">No jargon. You see working software early, and we change it until it fits how your office works.</p>
+  <ol class="steps">
+    <li><h3>I look at your registers</h3><p>We sit together for an hour. I see how your office keeps records today and what slows you down.</p></li>
+    <li><h3>You try a demo</h3><p>You get a working demo shaped around your fees, bookings or stock, to click through with your staff before anything is final.</p></li>
+    <li><h3>I install and train</h3><p>The system goes on your office computer. I train your staff and move your existing records in.</p></li>
+    <li><h3>Backups and support</h3><p>Backups go to a USB drive every week, and I'm on WhatsApp when something needs changing.</p></li>
+  </ol>
+</section>
+
+<section id="about" aria-labelledby="about-title">
+  <div class="about">
+    <h2 class="sec-title" id="about-title">About me</h2>
+    <div>
+      <p>I'm a full-stack developer from Pakistan and the founder of Nexora Software &amp; Web Solutions. I like building software for real offices: the kind that has to print a correct receipt on a busy Monday morning and still work when the internet is down.</p>
+      <p>Most of my work is in Python and Django, with careful attention to the parts that handle money: receipts that can't be edited, accounts that always balance, and backups you can actually restore.</p>
+      <ul class="facts">
+        <li><span>I build</span><span>School, travel agency and small-business systems, plus websites</span></li>
+        <li><span>Tools</span><span>Python, Django, SQLite, JavaScript, HTML and CSS, Bootstrap, Git</span></li>
+        <li><span>Languages</span><span>English and Urdu</span></li>
+        <li><span>Available for</span><span>Projects in Pakistan and remote work worldwide</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-title">
+  <div class="contact">
+    <div>
+      <h2 class="sec-title" id="contact-title">Tell me what your office tracks on paper today.</h2>
+      <p>Send a photo of your register or a short message. I'll reply with how it could work as software.</p>
+    </div>
+    <div class="links">
+      <a class="wa" href="https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        <span><b>WhatsApp</b><small>+92 308 4538969</small></span></a>
+      <a href="mailto:nexoraservices90@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span><b>Email</b><small>nexoraservices90@gmail.com</small></span></a>
+      <a href="https://www.fiverr.com/talhazubair110" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".9"/><text x="12" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#18213A">fi</text></svg>
+        <span><b>Fiverr</b><small>@talhazubair110</small></span></a>
+      <a href="https://github.com/talhazubair2401" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .4 1 .2 2.2.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
+        <span><b>GitHub</b><small>@talhazubair2401</small></span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Talha Zubair · Nexora Software &amp; Web Solutions</span>
+  <span>Demo data on this page and in the live demos is fictional.</span>
+</footer>
+</div>
+</body>
+</html>
