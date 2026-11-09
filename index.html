@@ -258,7 +258,7 @@ footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: fl
 
 <section id="work" aria-labelledby="work-title">
   <h2 class="sec-title" id="work-title">Work</h2>
-  <p class="sec-lead">Two complete systems you can try right now. Both demos sign you in with one click and use made-up data, so press anything.</p>
+  <p class="sec-lead">Two complete systems you can try right now, and a school website built for a real client. Both demos sign you in with one click and use made-up data, so press anything.</p>
 
   <article class="case" aria-labelledby="sp-title">
     <div class="case-head">
@@ -336,6 +336,41 @@ footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: fl
       </div>
     </div>
     <p class="tech"><b>For developers:</b> Python, Django, SQLite, Bootstrap and Chart.js. Access rules enforced in middleware, transaction-safe serial numbers, print-ready layouts, and 56 automated tests.</p>
+  </article>
+
+  <article class="case" aria-labelledby="ifs-title">
+    <div class="case-head">
+      <div>
+        <h3 id="ifs-title">Ideal Future School website</h3>
+        <p class="one">The public website of a real school in Nowshera Virkan, in English and Urdu, with online admission requests and an office panel the staff run themselves.</p>
+      </div>
+    </div>
+    <a class="shot" href="assets/ifs-home.jpg" target="_blank" rel="noopener"><img src="assets/ifs-home.jpg" width="1400" height="875" alt="Ideal Future School home page with the school crest, admission buttons and a wooden takhti showing the verse from the school crest" loading="lazy"></a>
+    <div class="thumbs">
+      <figure><a href="assets/ifs-urdu.jpg" target="_blank" rel="noopener"><img src="assets/ifs-urdu.jpg" width="1400" height="875" alt="The same home page in Urdu, laid out right to left in Nastaliq script" loading="lazy"></a><figcaption>Every page in Urdu, right to left</figcaption></figure>
+      <figure><a href="assets/ifs-admissions.jpg" target="_blank" rel="noopener"><img src="assets/ifs-admissions.jpg" width="1400" height="875" alt="Admissions page with the steps to apply and the documents to bring" loading="lazy"></a><figcaption>Admissions with an online form</figcaption></figure>
+      <figure><a href="assets/ifs-brain.jpg" target="_blank" rel="noopener"><img src="assets/ifs-brain.jpg" width="1400" height="875" alt="Brain Corner page with ten learning games for young children" loading="lazy"></a><figcaption>Brain Corner: ten games for kids</figcaption></figure>
+    </div>
+    <div class="story">
+      <div>
+        <h4>The challenge</h4>
+        <p>Parents found the school only by word of mouth. Admission questions came by phone at all hours, notices went round on WhatsApp, and many parents read Urdu more easily than English.</p>
+      </div>
+      <div>
+        <h4>What I built</h4>
+        <ul>
+          <li><b>Every page in English and Urdu</b>, with proper right-to-left Nastaliq, switched with one tap.</li>
+          <li><b>Admission requests online.</b> The office tracks each one from new to admitted and exports to Excel.</li>
+          <li><b>Staff update it themselves</b>: notices, news, events, photo albums, results, downloads and job openings, with separate roles for principal, office and content.</li>
+          <li><b>Children's privacy first.</b> Teachers and toppers appear only with consent, photo location data is removed and CVs are stored privately.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The result</h4>
+        <p>A website the school owns and runs without a developer: a dashboard shows who is waiting for a call, a checklist shows what to fill in before launch, and nightly backups keep everything safe.</p>
+      </div>
+    </div>
+    <p class="tech"><b>For developers:</b> Python, Django 5.2 and SQLite with one stylesheet and no build step. Login lockout, idle sign-out, a security log, Content-Security-Policy headers, seasonal themes checked for readable contrast, backup and restore commands, and 124 automated tests.</p>
   </article>
 </section>
 
