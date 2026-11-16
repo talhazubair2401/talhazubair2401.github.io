@@ -3,412 +3,369 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Talha Zubair · Business software for schools and travel agencies</title>
-<meta name="description" content="Talha Zubair (Nexora Software & Web Solutions) builds offline-first business software for schools, travel agencies and small businesses in Pakistan: fees, bookings, receipts and accounts.">
-<meta property="og:title" content="Talha Zubair · Business software that replaces paper registers">
-<meta property="og:description" content="Fee, booking and accounting systems for Pakistani schools and travel agencies. Try the live demos.">
+<title>Talha Zubair, software developer</title>
+<meta name="description" content="Talha Zubair is a full-stack software developer working in Python, Django, TypeScript and Next.js. Accounting systems, school and travel software, and a 3D fashion storefront, with live demos.">
+<meta property="og:title" content="Talha Zubair, software developer">
+<meta property="og:description" content="Full-stack systems in Python, Django, TypeScript and Next.js. Try the live demos.">
 <meta property="og:image" content="https://talhazubair2401.github.io/assets/sp-dashboard.jpg">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318213A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' fill='%23EEF3EA' text-anchor='middle'%3ETZ%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0C1030">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230C1030'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='32' fill='%2345E3CF' text-anchor='middle'%3ETZ%3C/text%3E%3C/svg%3E">
 <style>
 @font-face { font-family: "Bricolage Grotesque"; src: url("assets/fonts/bricolage.woff") format("woff"); font-weight: 200 800; font-display: swap; }
-@font-face { font-family: "Caveat"; src: url("assets/fonts/caveat.woff") format("woff"); font-weight: 400 700; font-display: swap; }
 :root {
-  --paper: #EEF3EA;
-  --rule: #D3DFD0;
-  --ink: #18213A;
-  --ink-2: #4A5470;
-  --stamp: #5B3E9E;
-  --margin: #C8463D;
-  --white: #FFFFFF;
-  --line: 32px;
+  --night: #0C1030;
+  --deep: #141A4A;
+  --line: rgba(163, 169, 214, .2);
+  --ink: #EDEFFF;
+  --mute: #A9AFDB;
+  --iris: #9486FF;
+  --aqua: #45E3CF;
+  --ember: #FFB36B;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
-  margin: 0;
-  color: var(--ink);
-  background-color: var(--paper);
-  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(var(--line) - 1px), var(--rule) calc(var(--line) - 1px) var(--line));
+  margin: 0; color: var(--ink); background: var(--night);
   font: 17px/1.6 "Bricolage Grotesque", system-ui, sans-serif;
-  font-optical-sizing: auto;
-  -webkit-font-smoothing: antialiased;
-}
-/* the red margin line of a register, down the whole page on wide screens */
-body::before {
-  content: ""; position: fixed; top: 0; bottom: 0; left: max(24px, calc(50% - 640px)); width: 2px;
-  background: var(--margin); opacity: .55; pointer-events: none; z-index: 0;
+  font-optical-sizing: auto; -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
 img { max-width: 100%; display: block; }
-:focus-visible { outline: 3px solid var(--stamp); outline-offset: 3px; border-radius: 4px; }
-.wrap { position: relative; z-index: 1; width: min(1180px, 100% - 32px); margin: 0 auto; padding-left: clamp(0px, 4vw, 48px); }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--white); padding: 8px 14px; z-index: 10; }
+h1, h2, h3, p { margin: 0; }
+:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: min(1180px, 100% - 40px); margin: 0 auto; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--night); padding: 8px 14px; z-index: 20; }
 .skip:focus { left: 16px; }
 
 /* ---------- header ---------- */
-.top { display: flex; align-items: center; gap: 24px; padding: 22px 0; }
-.brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.15; }
-.brand b { font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
-.brand span { font-size: 13px; color: var(--ink-2); }
-.nav { margin-left: auto; display: flex; gap: 22px; align-items: center; }
-.nav a { text-decoration: none; font-weight: 500; }
-.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.btn { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; border: 2px solid var(--ink); transition: transform .15s; }
-.btn:hover { transform: translateY(-1px); }
-.btn-ink { background: var(--ink); color: var(--paper); }
-.btn-line { background: var(--white); color: var(--ink); }
+.top { position: relative; z-index: 3; display: flex; align-items: center; gap: 24px; padding: 22px 0; }
+.brand { text-decoration: none; font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.nav { margin-left: auto; display: flex; gap: 26px; align-items: center; }
+.nav a { text-decoration: none; font-weight: 500; color: var(--mute); }
+.nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 999px; font: inherit; font-weight: 700; text-decoration: none; border: 1.5px solid var(--ink); cursor: pointer; }
+.btn-solid { background: var(--ink); color: var(--night); }
+.btn-solid:hover { background: var(--aqua); border-color: var(--aqua); }
+.btn-line { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-line:hover { border-color: var(--ink); }
 .btn svg { width: 18px; height: 18px; flex: none; }
-.nav .btn { padding: 9px 16px; }
+.nav .btn { padding: 8px 18px; color: var(--night); }
 
 /* ---------- hero ---------- */
-.hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 56px 0 88px; }
-.hero h1 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 0 0 22px; font-variation-settings: "opsz" 96; }
-.hero p.lead { font-size: 19px; color: var(--ink-2); max-width: 34em; margin: 0 0 30px; }
-.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.urdu { font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif; direction: rtl; }
+.hero { position: relative; overflow: hidden; }
+#field { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
+.hero-in { position: relative; z-index: 2; padding: 64px 0 96px; }
+.hero h1 { font-size: clamp(44px, 7.6vw, 104px); line-height: .96; letter-spacing: -.03em; font-weight: 800; max-width: 11em; font-variation-settings: "opsz" 96; }
+.hero .lead { font-size: clamp(18px, 1.6vw, 21px); color: var(--mute); max-width: 36em; margin-top: 26px; }
 
-.proof { position: relative; height: 470px; }
-.register {
-  position: absolute; left: 0; top: 0; width: 78%; padding: 18px 22px 22px 56px; border-radius: 6px;
-  background-color: #F8FAF5;
-  background-image: repeating-linear-gradient(to bottom, transparent 0 39px, #C9D8E6 39px 40px);
-  background-position: 0 50px;
-  box-shadow: 0 1px 0 #d9e2d6, 0 12px 30px -18px rgba(24,33,58,.45);
-  transform: rotate(-2.2deg);
-}
-.register::before { content: ""; position: absolute; top: 0; bottom: 0; left: 40px; width: 2px; background: var(--margin); opacity: .7; }
-.register h3 { font: 700 15px/1 "Bricolage Grotesque", sans-serif; margin: 0 0 14px; color: var(--ink-2); }
-.register ol { list-style: none; margin: 0; padding: 0; font: 500 24px/40px "Caveat", cursive; color: #233a6b; }
-.register li { white-space: nowrap; overflow: hidden; text-overflow: clip; }
-.register s { text-decoration-color: var(--margin); text-decoration-thickness: 2px; }
-.register .q { color: var(--margin); }
-
-.receipt {
-  position: absolute; right: 0; bottom: 0; width: 64%; background: var(--white); border-radius: 4px; padding: 22px 24px 26px;
-  box-shadow: 0 24px 50px -24px rgba(24,33,58,.55), 0 2px 0 rgba(24,33,58,.06); transform: rotate(1.6deg);
-  font-size: 14px;
-}
-.receipt::after { /* torn bottom edge */
-  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 10px;
-  background: radial-gradient(circle at 8px -2px, transparent 8px, var(--white) 8.5px) 0 0 / 16px 10px repeat-x;
-}
-.receipt .hd { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 12px; }
-.receipt .hd b { font-size: 15px; }
-.receipt .hd span { font-size: 12px; color: var(--ink-2); }
-.receipt dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; }
-.receipt dt { color: var(--ink-2); }
-.receipt dd { margin: 0; font-weight: 500; text-align: right; }
-.receipt .amt { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: baseline; margin-top: 14px; padding: 10px 12px; border: 2px solid var(--ink); border-radius: 6px; }
-.receipt .amt b { font-size: 22px; font-variant-numeric: tabular-nums; }
-.receipt .words { font-size: 12px; font-style: italic; color: var(--ink-2); margin-top: 6px; }
-.stamp {
-  position: relative; flex: none; margin-right: 6px; padding: 5px 12px 3px; border: 4px solid var(--stamp); border-radius: 10px;
-  color: var(--stamp); font-weight: 800; font-size: 28px; letter-spacing: .08em; line-height: 1; transform: rotate(-12deg);
-  mix-blend-mode: multiply; opacity: .9;
-  -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 55%, rgba(0,0,0,.75) 75%, #000 100%);
-}
-.stamp small { display: block; font-size: 11px; letter-spacing: .12em; text-align: center; margin-top: 3px; font-weight: 700; }
-@media (prefers-reduced-motion: no-preference) {
-  .stamp { animation: thump .5s cubic-bezier(.2,.9,.3,1.3) 1s both; }
-  @keyframes thump { 0% { opacity: 0; transform: rotate(-12deg) scale(2.4); } 70% { opacity: .95; transform: rotate(-12deg) scale(.94); } 100% { opacity: .9; transform: rotate(-12deg) scale(1); } }
-}
-.receipt .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-top: 16px; }
-.receipt .sig { flex: 1; border-top: 1px solid var(--ink-2); padding-top: 4px; font-size: 11px; color: var(--ink-2); max-width: 9.5em; }
-.arrow-note { position: absolute; left: 6%; top: 68%; font: 700 22px/1.1 "Caveat", cursive; color: var(--stamp); transform: rotate(-6deg); }
-.arrow-note svg { display: block; width: 70px; height: 46px; margin: 4px 0 0 30px; }
+/* the console: the one loud thing on the page */
+.console { margin-top: 44px; max-width: 760px; border: 1px solid var(--line); border-radius: 18px; background: rgba(20, 26, 74, .78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 30px 80px -40px #000; }
+.console-bar { display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); font: 13px/1.4 var(--mono); color: var(--mute); }
+.log { padding: 18px 18px 6px; min-height: 148px; font-size: 17px; }
+.log .q { font: 14px/1.5 var(--mono); color: var(--aqua); margin-bottom: 6px; }
+.log .q::before { content: "> "; color: var(--mute); }
+.log .a { color: var(--ink); max-width: 38em; }
+.log .a.typing::after { content: ""; display: inline-block; width: .5em; height: 1.05em; margin-left: 3px; vertical-align: -.15em; background: linear-gradient(var(--aqua), var(--iris)); }
+@media (prefers-reduced-motion: no-preference) { .log .a.typing::after { animation: blink 1s steps(2) infinite; } @keyframes blink { 50% { opacity: 0; } } }
+.log .go { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 12px; }
+.log .go a { color: var(--aqua); font-weight: 600; text-underline-offset: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px 4px; }
+.chips button { font: 500 14px/1 "Bricolage Grotesque", sans-serif; color: var(--ink); background: rgba(148, 134, 255, .14); border: 1px solid rgba(148, 134, 255, .45); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+.chips button:hover { background: rgba(148, 134, 255, .3); }
+.ask { display: flex; gap: 10px; padding: 12px 18px 18px; }
+.ask input { flex: 1; min-width: 0; font: 15px/1.2 var(--mono); color: var(--ink); background: rgba(12, 16, 48, .7); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.ask input::placeholder { color: #8088BD; }
+.ask button { font: 700 15px/1 "Bricolage Grotesque", sans-serif; color: var(--night); background: var(--aqua); border: 0; border-radius: 10px; padding: 0 18px; cursor: pointer; }
+.honest { font-size: 14px; color: var(--mute); margin-top: 12px; max-width: 760px; }
 
 /* ---------- sections ---------- */
-section { padding: 64px 0; }
-.sec-title { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; margin: 0 0 12px; }
-.sec-lead { color: var(--ink-2); max-width: 40em; margin: 0 0 40px; font-size: 18px; }
+.band { padding: 84px 0; }
+.sec-title { font-size: clamp(32px, 4.2vw, 56px); line-height: 1; letter-spacing: -.035em; font-weight: 800; }
+.sec-lead { color: var(--mute); max-width: 38em; margin-top: 14px; font-size: 18px; }
 
-/* ---------- case studies ---------- */
-.case { background: var(--white); border-radius: 18px; padding: clamp(22px, 3.4vw, 44px); margin-bottom: 40px; box-shadow: 0 1px 0 #d9e2d6; }
-.case-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 30px; align-items: flex-end; margin-bottom: 26px; }
-.case h3 { font-size: clamp(26px, 3vw, 36px); line-height: 1.1; letter-spacing: -.025em; margin: 0 0 8px; font-weight: 800; }
-.case .one { font-size: 18px; color: var(--ink-2); margin: 0; max-width: 36em; }
-.case .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-.shot { border-radius: 12px; overflow: hidden; border: 1px solid #dfe5dc; background: #f6f8f4; }
-.shot img { width: 100%; height: auto; }
-.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
-.thumbs figure { margin: 0; }
-.thumbs img { height: auto; border-radius: 10px; border: 1px solid #dfe5dc; aspect-ratio: 16/10; object-fit: cover; object-position: top center; width: 100%; }
-.thumbs figcaption { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
-.story { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 34px; margin-top: 34px; }
-.story h4 { font-size: 17px; margin: 0 0 8px; }
-.story p, .story ul { margin: 0; color: var(--ink-2); font-size: 16px; }
-.story ul { padding-left: 18px; }
-.story li { margin-bottom: 6px; }
-.story li b { color: var(--ink); font-weight: 600; }
-.tech { margin-top: 28px; padding-top: 18px; border-top: 1px dashed #cfd8cc; font-size: 15px; color: var(--ink-2); }
-.tech b { color: var(--ink); }
+/* ---------- work ---------- */
+.proj { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(28px, 4vw, 60px); align-items: start; padding: 56px 0; border-top: 1px solid var(--line); }
+.projects { margin-top: 44px; }
+.proj:nth-child(even) .media { order: 2; }
+.frame { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--deep); }
+.frame-bar { display: flex; align-items: center; gap: 10px; padding: 9px 14px; font: 12px/1.4 var(--mono); color: var(--mute); border-bottom: 1px solid var(--line); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.frame-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); flex: none; }
+.frame-bar i.wip { background: var(--ember); }
+.frame img { width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; object-position: top center; }
+.thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+.thumbs button { padding: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: none; cursor: pointer; opacity: .55; }
+.thumbs button:hover, .thumbs button[aria-pressed="true"] { opacity: 1; }
+.thumbs button[aria-pressed="true"] { border-color: var(--aqua); }
+.thumbs img { height: auto; aspect-ratio: 16/10; object-fit: cover; object-position: top center; width: 100%; }
+.cap { font-size: 14px; color: var(--mute); margin-top: 10px; min-height: 1.6em; }
+#lathe { display: block; width: 100%; aspect-ratio: 16/10; cursor: grab; touch-action: pan-y; }
+#lathe:active { cursor: grabbing; }
+.proj h3 { font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; }
+.proj .one { font-size: 19px; margin-top: 12px; }
+.proj ul { margin: 20px 0 0; padding: 0; list-style: none; color: var(--mute); }
+.proj li { padding: 10px 0 10px 22px; border-top: 1px solid var(--line); position: relative; font-size: 16px; }
+.proj li::before { content: ""; position: absolute; left: 2px; top: 1.15em; width: 8px; height: 8px; border-radius: 2px; background: var(--iris); transform: rotate(45deg); }
+.proj li b { color: var(--ink); font-weight: 600; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin: 22px 0 0; font-size: 15px; }
+.facts dt { color: var(--mute); }
+.facts dd { margin: 0; }
+.proj .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+
+/* ---------- toolkit ---------- */
+.kit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; margin-top: 44px; }
+.kit h3 { font-size: 19px; padding-top: 16px; border-top: 2px solid var(--iris); }
+.kit div:nth-child(2) h3 { border-color: var(--aqua); }
+.kit div:nth-child(3) h3 { border-color: var(--ember); }
+.kit div:nth-child(4) h3 { border-color: var(--ink); }
+.kit p { color: var(--mute); font-size: 16px; margin-top: 10px; }
 
 /* ---------- process ---------- */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; counter-reset: s; }
-.steps li { counter-increment: s; position: relative; padding-top: 52px; }
-.steps li::before {
-  content: counter(s); position: absolute; top: 0; left: 0; width: 38px; height: 38px; border-radius: 50%;
-  border: 2px solid var(--stamp); color: var(--stamp); font-weight: 800; display: grid; place-items: center;
-}
-.steps h3 { font-size: 19px; margin: 0 0 6px; }
-.steps p { margin: 0; color: var(--ink-2); font-size: 16px; }
+.steps { list-style: none; margin: 44px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px; counter-reset: s; }
+.steps li { counter-increment: s; }
+.steps li::before { content: counter(s); display: block; font-size: 56px; line-height: 1; font-weight: 800; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--iris); margin-bottom: 14px; }
+.steps h3 { font-size: 19px; }
+.steps p { color: var(--mute); font-size: 16px; margin-top: 6px; }
 
-/* ---------- about ---------- */
-.about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
-.about p { margin: 0 0 14px; max-width: 36em; }
-.facts { list-style: none; margin: 0; padding: 0; }
-.facts li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 9em 1fr; gap: 12px; }
-.facts li span:first-child { color: var(--ink-2); }
-
-/* ---------- contact ---------- */
-.contact { background: var(--ink); color: var(--paper); border-radius: 22px; padding: clamp(28px, 5vw, 60px); display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
-.contact .sec-title { color: var(--white); }
-.contact p { color: #c9d1e4; margin: 0; max-width: 32em; font-size: 18px; }
-.links { display: grid; gap: 12px; }
-.links a { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); text-decoration: none; }
-.links a:hover { background: rgba(255,255,255,.13); }
-.links a.wa { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+/* ---------- about + contact ---------- */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.about p { max-width: 34em; margin-top: 18px; }
+.about p.dim { color: var(--mute); }
+.links { display: grid; gap: 10px; }
+.links a { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); text-decoration: none; }
+.links a:hover { border-color: var(--ink); }
+.links a.wa { background: var(--aqua); color: var(--night); border-color: var(--aqua); }
+.links a.wa:hover { background: var(--ink); border-color: var(--ink); }
 .links svg { width: 22px; height: 22px; flex: none; }
 .links b { display: block; font-size: 16px; }
 .links small { display: block; font-size: 14px; opacity: .8; }
-footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer { padding: 30px 0 48px; border-top: 1px solid var(--line); color: var(--mute); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; }
-  .proof { height: 420px; max-width: 560px; }
-  .story { grid-template-columns: 1fr; gap: 22px; }
-  .steps { grid-template-columns: 1fr 1fr; }
-  .about, .contact { grid-template-columns: 1fr; }
+  .proj { grid-template-columns: 1fr; }
+  .proj:nth-child(even) .media { order: 0; }
+  .kit, .steps { grid-template-columns: 1fr 1fr; }
+  .about { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  body::before { display: none; }
-  .wrap { padding-left: 0; }
   .nav a:not(.btn) { display: none; }
-  .proof { height: auto; }
-  .register { position: relative; width: 94%; padding-left: 46px; }
-  .receipt { position: relative; margin: -34px 0 0 auto; }
-  .register::before { left: 32px; }
-  .register ol { font-size: 20px; }
-  .receipt { width: 88%; }
-  .arrow-note { display: none; }
-  .thumbs { grid-template-columns: 1fr 1fr; }
-  .thumbs figure:last-child { display: none; }
-  .steps { grid-template-columns: 1fr; }
-  .facts li { grid-template-columns: 1fr; gap: 2px; }
+  .hero-in { padding: 36px 0 72px; }
+  .band { padding: 60px 0; }
+  .kit, .steps { grid-template-columns: 1fr; gap: 26px; }
+  .ask button { padding: 0 14px; }
 }
 </style>
 </head>
 <body>
 <a class="skip" href="#work">Skip to work</a>
+
+<div class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="#top" aria-label="Talha Zubair, home">Talha Zubair</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#toolkit">Toolkit</a>
+        <a href="#process">Process</a>
+        <a class="btn btn-solid" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top" class="hero-in">
+      <h1>I build the software businesses run on.</h1>
+      <p class="lead">I'm Talha Zubair, a full-stack developer. Python and Django at the back, TypeScript, Next.js and 3D at the front. Three systems shipped with live demos, and a fourth in the build.</p>
+
+      <section class="console" aria-label="Ask about my work">
+        <div class="console-bar"><span>ask-talha</span><span>4 projects loaded</span></div>
+        <div class="log" id="log" aria-live="polite"></div>
+        <div class="chips" id="chips">
+          <button type="button" data-k="build">What do you build?</button>
+          <button type="button" data-k="best">Show me your strongest project</button>
+          <button type="button" data-k="stack">What's your stack?</button>
+          <button type="button" data-k="tests">How do you test?</button>
+          <button type="button" data-k="hire">Are you available?</button>
+          <button type="button" data-k="ai">Is this AI?</button>
+        </div>
+        <form class="ask" id="ask">
+          <input id="q" type="text" autocomplete="off" placeholder="Ask about my work" aria-label="Ask a question about my work">
+          <button type="submit">Ask</button>
+        </form>
+      </section>
+      <p class="honest">The box above is a small script choosing from answers I wrote, not a language model. Everything it says is true.</p>
+    </main>
+  </div>
+</div>
+
 <div class="wrap">
-
-<header class="top">
-  <a class="brand" href="#top" aria-label="Talha Zubair, home"><b>Talha Zubair</b><span>Nexora Software &amp; Web Solutions</span></a>
-  <nav class="nav" aria-label="Main">
-    <a href="#work">Work</a>
-    <a href="#process">How I work</a>
-    <a href="#about">About</a>
-    <a class="btn btn-ink" href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main id="top">
-<section class="hero" aria-labelledby="hero-title">
-  <div>
-    <h1 id="hero-title">Your office runs on paper registers. I turn them into software.</h1>
-    <p class="lead">I'm Talha Zubair. I build fee, booking and accounting systems for schools, travel agencies and small businesses in Pakistan. They install on your own computer, print proper receipts, and keep working when the internet doesn't.</p>
-    <div class="ctas">
-      <a class="btn btn-ink" href="https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-        Message me on WhatsApp</a>
-      <a class="btn btn-line" href="#work">See my work</a>
-    </div>
-  </div>
-
-  <div class="proof" aria-label="A handwritten register entry next to the printed receipt the software makes">
-    <div class="register" aria-hidden="true">
-      <h3>Fee register, October</h3>
-      <ol>
-        <li>Ayesha · Oct fee · 2500 <s>1250</s> <span class="q">paid?</span></li>
-        <li>Hamza · Class 7 · 4500 <span class="q">??</span></li>
-        <li>Ahmed R. · Dubai ticket · 172,000</li>
-        <li><s>Fatima · 3000</s> <span class="q">next pg</span></li>
-      </ol>
-    </div>
-    <div class="arrow-note" aria-hidden="true">becomes
-      <svg viewBox="0 0 70 46" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 6c18 2 36 12 52 32"/><path d="M44 36l12 3 2-12"/></svg>
-    </div>
-    <div class="receipt">
-      <div class="hd"><b>Fee receipt</b><span>R-2026-00834</span></div>
-      <dl>
-        <dt>Student</dt><dd>Ayesha Naeem</dd>
-        <dt>Class</dt><dd>Play Group</dd>
-        <dt>For</dt><dd>October 2026</dd>
-      </dl>
-      <div class="amt"><span>Received</span><b>Rs. 2,500</b></div>
-      <div class="words">Two thousand five hundred rupees only</div>
-      <div class="foot"><span class="sig">Received by office clerk</span><div class="stamp" aria-hidden="true">PAID<small>04-10-2026</small></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="work" aria-labelledby="work-title">
+<section class="band" id="work" aria-labelledby="work-title">
   <h2 class="sec-title" id="work-title">Work</h2>
-  <p class="sec-lead">Two complete systems you can try right now, and a school website built for a real client. Both demos sign you in with one click and use made-up data, so press anything.</p>
+  <p class="sec-lead">Each demo signs you in with one click and runs on made-up data, so press anything.</p>
 
-  <article class="case" aria-labelledby="sp-title">
-    <div class="case-head">
-      <div>
-        <h3 id="sp-title">Nexora SafarPro</h3>
-        <p class="one">One system for the whole travel agency: bookings, tickets, visas, Umrah groups, tours and accounts. It works even when the internet doesn't.</p>
+  <div class="projects">
+  <article class="proj" id="safarpro" aria-labelledby="sp-title">
+    <div class="media">
+      <div class="frame">
+        <div class="frame-bar"><i></i>nexoraservices90.pythonanywhere.com</div>
+        <img class="main" src="assets/sp-dashboard.jpg" width="1400" height="875" alt="SafarPro dashboard with net sales, collections, gross profit, receivables and a six-month revenue chart">
       </div>
+      <div class="thumbs">
+        <button type="button" aria-pressed="true" data-cap="Dashboard for every branch"><img src="assets/sp-dashboard.jpg" width="1400" height="875" alt="SafarPro dashboard with net sales, collections, gross profit, receivables and a six-month revenue chart" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Booking with balance and timeline"><img src="assets/sp-booking.jpg" width="1400" height="875" alt="A tour booking with selling price, amount paid, outstanding balance and timeline" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Umrah group manifest"><img src="assets/sp-umrah.jpg" width="1400" height="875" alt="Umrah group manifest listing pilgrims with passport, visa, room and payment status" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Receipt that can't be edited"><img src="assets/sp-receipt.jpg" width="1400" height="875" alt="Payment receipt with the amount written in words" loading="lazy"></button>
+      </div>
+      <p class="cap">Dashboard for every branch</p>
+    </div>
+    <div>
+      <h3 id="sp-title">Nexora SafarPro</h3>
+      <p class="one">One system for a whole travel agency: bookings, tickets, visas, Umrah groups, tours and accounts. It keeps working when the internet doesn't.</p>
+      <ul>
+        <li><b>A double-entry ledger engine.</b> Profit and loss come from the same records as the receipts.</li>
+        <li><b>Receipts can't be quietly changed.</b> Mistakes are reversed, never edited.</li>
+        <li><b>Nine staff roles,</b> checked on the server for every action.</li>
+        <li><b>Offline on the agency's own PC,</b> with one-click verified backups.</li>
+      </ul>
+      <dl class="facts">
+        <dt>Stack</dt><dd>Python, Django, SQLite, vanilla JavaScript</dd>
+        <dt>Tests</dt><dd>39 automated</dd>
+      </dl>
       <div class="ctas">
-        <a class="btn btn-ink" href="https://nexoraservices90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
+        <a class="btn btn-solid" href="https://nexoraservices90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
         <a class="btn btn-line" href="https://github.com/talhazubair2401/nexora-safarpro" target="_blank" rel="noopener">See the code</a>
       </div>
     </div>
-    <a class="shot" href="assets/sp-dashboard.jpg" target="_blank" rel="noopener"><img src="assets/sp-dashboard.jpg" width="1400" height="875" alt="SafarPro dashboard with net sales, collections, gross profit, receivables and a six-month revenue chart" loading="lazy"></a>
-    <div class="thumbs">
-      <figure><a href="assets/sp-booking.jpg" target="_blank" rel="noopener"><img src="assets/sp-booking.jpg" width="1400" height="875" alt="A tour booking with selling price, amount paid, outstanding balance and timeline" loading="lazy"></a><figcaption>Booking with balance and timeline</figcaption></figure>
-      <figure><a href="assets/sp-umrah.jpg" target="_blank" rel="noopener"><img src="assets/sp-umrah.jpg" width="1400" height="875" alt="Umrah group manifest listing pilgrims with passport, visa, room and payment status" loading="lazy"></a><figcaption>Umrah group manifest</figcaption></figure>
-      <figure><a href="assets/sp-receipt.jpg" target="_blank" rel="noopener"><img src="assets/sp-receipt.jpg" width="1400" height="875" alt="Payment receipt with the amount written in words" loading="lazy"></a><figcaption>Receipt that can't be edited</figcaption></figure>
-    </div>
-    <div class="story">
-      <div>
-        <h4>The challenge</h4>
-        <p>Agencies run on WhatsApp chats, registers and Excel. The owner can't quickly see who still owes money, which supplier is due this week, which pilgrims are missing passports, or whether the month made a profit.</p>
-      </div>
-      <div>
-        <h4>What I built</h4>
-        <ul>
-          <li><b>Runs on the agency's own PC</b>, fully offline, with one-click verified backups to a USB drive.</li>
-          <li><b>Receipts can't be quietly changed.</b> Mistakes are reversed, never edited, so the books stay honest.</li>
-          <li><b>Umrah groups</b> with every pilgrim's passport, visa, room and payment in one list.</li>
-          <li><b>Staff logins with limits.</b> A receptionist can't see accounts or take payments.</li>
-        </ul>
-      </div>
-      <div>
-        <h4>The result</h4>
-        <p>One dashboard shows sales, collections, overdue customers and supplier dues for every branch, with profit and loss calculated from the same records.</p>
-      </div>
-    </div>
-    <p class="tech"><b>For developers:</b> Python, Django and SQLite with vanilla JavaScript. A double-entry ledger engine, server-side permission checks on every action, protection against double submissions, and 39 automated tests.</p>
   </article>
 
-  <article class="case" aria-labelledby="sc-title">
-    <div class="case-head">
-      <div>
-        <h3 id="sc-title">Nexora School Office</h3>
-        <p class="one">Fees, receipts, attendance, results and certificates for a school office. First built for a real private school.</p>
+  <article class="proj" id="aurevon" aria-labelledby="av-title">
+    <div class="media">
+      <div class="frame">
+        <div class="frame-bar"><i class="wip"></i>aurevon, in development</div>
+        <canvas id="lathe" role="img" aria-label="A rotating point-cloud garment form. Drag to turn it."></canvas>
       </div>
+      <p class="cap">Drag to turn it. This is a canvas sketch of the idea; the real viewer loads compressed GLB garments with three.js.</p>
+    </div>
+    <div>
+      <h3 id="av-title">AureVon</h3>
+      <p class="one">A fashion storefront where you turn the garment in 3D before you buy, with the whole shop behind it: checkout, stock, couriers, returns and reports.</p>
+      <ul>
+        <li><b>3D product viewer</b> built on three.js and React Three Fiber, with an asset pipeline that checks and compresses every model.</li>
+        <li><b>Typed end to end.</b> The TypeScript API client is generated from the OpenAPI schema, and CI fails if they drift.</li>
+        <li><b>Refunds need two approvals,</b> and every staff endpoint has its own security test.</li>
+        <li><b>English and Urdu,</b> left to right and right to left, priced in rupees.</li>
+      </ul>
+      <dl class="facts">
+        <dt>Stack</dt><dd>Next.js, React, TypeScript, Django REST Framework, PostgreSQL, Redis, Celery, Docker</dd>
+        <dt>Tests</dt><dd>256 backend, 107 route-security cases, Playwright journeys</dd>
+        <dt>Status</dt><dd>In development, not yet live</dd>
+      </dl>
       <div class="ctas">
-        <a class="btn btn-ink" href="https://nexoraschool90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
+        <a class="btn btn-line" href="https://github.com/talhazubair2401/aurevon" target="_blank" rel="noopener">See the code</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="proj" id="school" aria-labelledby="sc-title">
+    <div class="media">
+      <div class="frame">
+        <div class="frame-bar"><i></i>nexoraschool90.pythonanywhere.com</div>
+        <img class="main" src="assets/sc-dashboard.jpg" width="1400" height="875" alt="School Office dashboard with students, fees received, fees still to collect, profit and colour-coded classes" loading="lazy">
+      </div>
+      <div class="thumbs">
+        <button type="button" aria-pressed="true" data-cap="Dashboard for the principal"><img src="assets/sc-dashboard.jpg" width="1400" height="875" alt="School Office dashboard with students, fees received, fees still to collect, profit and colour-coded classes" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Fee receipt with PAID stamp"><img src="assets/sc-receipt.jpg" width="1400" height="875" alt="Fee receipt with a PAID stamp" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Certificate on letterhead, English and Urdu"><img src="assets/sc-certificate.jpg" width="1400" height="1501" alt="Experience certificate printed on the school letterhead in English and Urdu" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Profit for the school year"><img src="assets/sc-profit.jpg" width="1400" height="875" alt="Profit for the school year with a monthly chart" loading="lazy"></button>
+      </div>
+      <p class="cap">Dashboard for the principal</p>
+    </div>
+    <div>
+      <h3 id="sc-title">Nexora School Office</h3>
+      <p class="one">Fees, receipts, attendance, results and certificates for a school office. First built for a real private school.</p>
+      <ul>
+        <li><b>A month's fees for every student in one click,</b> with part payments, receipts and challans.</li>
+        <li><b>Result cards</b> with grade and class position worked out automatically.</li>
+        <li><b>Only the principal</b> can change a fee or see salaries and profit. Blocked attempts are logged.</li>
+        <li><b>Serial numbers that never collide,</b> even when two clerks print at once.</li>
+      </ul>
+      <dl class="facts">
+        <dt>Stack</dt><dd>Python, Django, SQLite, Bootstrap, Chart.js</dd>
+        <dt>Tests</dt><dd>56 automated</dd>
+      </dl>
+      <div class="ctas">
+        <a class="btn btn-solid" href="https://nexoraschool90.pythonanywhere.com" target="_blank" rel="noopener">Try the live demo</a>
         <a class="btn btn-line" href="https://github.com/talhazubair2401/nexora-school-office" target="_blank" rel="noopener">See the code</a>
       </div>
     </div>
-    <a class="shot" href="assets/sc-dashboard.jpg" target="_blank" rel="noopener"><img src="assets/sc-dashboard.jpg" width="1400" height="875" alt="School Office dashboard with students, fees received, fees still to collect, profit and colour-coded classes" loading="lazy"></a>
-    <div class="thumbs">
-      <figure><a href="assets/sc-receipt.jpg" target="_blank" rel="noopener"><img src="assets/sc-receipt.jpg" width="1400" height="875" alt="Fee receipt with a PAID stamp" loading="lazy"></a><figcaption>Fee receipt with PAID stamp</figcaption></figure>
-      <figure><a href="assets/sc-certificate.jpg" target="_blank" rel="noopener"><img src="assets/sc-certificate.jpg" width="1400" height="1501" alt="Experience certificate printed on the school letterhead in English and Urdu" loading="lazy"></a><figcaption>Certificate on letterhead</figcaption></figure>
-      <figure><a href="assets/sc-profit.jpg" target="_blank" rel="noopener"><img src="assets/sc-profit.jpg" width="1400" height="875" alt="Profit for the school year with a monthly chart" loading="lazy"></a><figcaption>Profit for the school year</figcaption></figure>
-    </div>
-    <div class="story">
-      <div>
-        <h4>The challenge</h4>
-        <p>Fees lived in a register, receipts were written by hand and certificates typed in Word. At month end nobody knew exactly who owed fees, and nothing stopped someone from quietly lowering a fee.</p>
-      </div>
-      <div>
-        <h4>What I built</h4>
-        <ul>
-          <li><b>A month's fees for every student in one click</b>, part payments, receipts and challans with every unpaid month.</li>
-          <li><b>Attendance and result cards</b> with grade and class position worked out automatically.</li>
-          <li><b>Certificates in English and Urdu</b> on the school letterhead.</li>
-          <li><b>Only the principal</b> can change a fee, delete anything or see salaries and profit. Blocked attempts are logged.</li>
-        </ul>
-      </div>
-      <div>
-        <h4>The result</h4>
-        <p>Receipts, challans, result cards and certificates print in seconds, and the principal sees who collected what and what the school earned. The demo uses a fictional school; the real school's records stay private.</p>
-      </div>
-    </div>
-    <p class="tech"><b>For developers:</b> Python, Django, SQLite, Bootstrap and Chart.js. Access rules enforced in middleware, transaction-safe serial numbers, print-ready layouts, and 56 automated tests.</p>
   </article>
 
-  <article class="case" aria-labelledby="ifs-title">
-    <div class="case-head">
-      <div>
-        <h3 id="ifs-title">Ideal Future School website</h3>
-        <p class="one">The public website of a real school in Nowshera Virkan, in English and Urdu, with online admission requests and an office panel the staff run themselves.</p>
+  <article class="proj" id="ifs" aria-labelledby="ifs-title">
+    <div class="media">
+      <div class="frame">
+        <div class="frame-bar"><i></i>talharasool155.pythonanywhere.com</div>
+        <img class="main" src="assets/ifs-home.jpg" width="1400" height="875" alt="Ideal Future School home page with the school crest and admission buttons" loading="lazy">
       </div>
-      <div class="ctas">
-        <a class="btn btn-ink" href="https://talharasool155.pythonanywhere.com" target="_blank" rel="noopener">Visit the website</a>
+      <div class="thumbs">
+        <button type="button" aria-pressed="true" data-cap="Home page"><img src="assets/ifs-home.jpg" width="1400" height="875" alt="Ideal Future School home page with the school crest and admission buttons" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Every page in Urdu, right to left"><img src="assets/ifs-urdu.jpg" width="1400" height="875" alt="The same home page in Urdu, laid out right to left in Nastaliq script" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Admissions with an online form"><img src="assets/ifs-admissions.jpg" width="1400" height="875" alt="Admissions page with the steps to apply and the documents to bring" loading="lazy"></button>
+        <button type="button" aria-pressed="false" data-cap="Brain Corner: ten games for kids"><img src="assets/ifs-brain.jpg" width="1400" height="875" alt="Brain Corner page with ten learning games for young children" loading="lazy"></button>
       </div>
+      <p class="cap">Home page</p>
     </div>
-    <a class="shot" href="assets/ifs-home.jpg" target="_blank" rel="noopener"><img src="assets/ifs-home.jpg" width="1400" height="875" alt="Ideal Future School home page with the school crest, admission buttons and a wooden takhti showing the verse from the school crest" loading="lazy"></a>
-    <div class="thumbs">
-      <figure><a href="assets/ifs-urdu.jpg" target="_blank" rel="noopener"><img src="assets/ifs-urdu.jpg" width="1400" height="875" alt="The same home page in Urdu, laid out right to left in Nastaliq script" loading="lazy"></a><figcaption>Every page in Urdu, right to left</figcaption></figure>
-      <figure><a href="assets/ifs-admissions.jpg" target="_blank" rel="noopener"><img src="assets/ifs-admissions.jpg" width="1400" height="875" alt="Admissions page with the steps to apply and the documents to bring" loading="lazy"></a><figcaption>Admissions with an online form</figcaption></figure>
-      <figure><a href="assets/ifs-brain.jpg" target="_blank" rel="noopener"><img src="assets/ifs-brain.jpg" width="1400" height="875" alt="Brain Corner page with ten learning games for young children" loading="lazy"></a><figcaption>Brain Corner: ten games for kids</figcaption></figure>
-    </div>
-    <div class="story">
-      <div>
-        <h4>The challenge</h4>
-        <p>Parents found the school only by word of mouth. Admission questions came by phone at all hours, notices went round on WhatsApp, and many parents read Urdu more easily than English.</p>
-      </div>
-      <div>
-        <h4>What I built</h4>
-        <ul>
-          <li><b>Every page in English and Urdu</b>, with proper right-to-left Nastaliq, switched with one tap.</li>
-          <li><b>Admission requests online.</b> The office tracks each one from new to admitted and exports to Excel.</li>
-          <li><b>Staff update it themselves</b>: notices, news, events, photo albums, results, downloads and job openings, with separate roles for principal, office and content.</li>
-          <li><b>Children's privacy first.</b> Teachers and toppers appear only with consent, photo location data is removed and CVs are stored privately.</li>
-        </ul>
-      </div>
-      <div>
-        <h4>The result</h4>
-        <p>A website the school owns and runs without a developer: a dashboard shows who is waiting for a call, a checklist shows what to fill in before launch, and nightly backups keep everything safe.</p>
-      </div>
-    </div>
-    <p class="tech"><b>For developers:</b> Python, Django 5.2 and SQLite with one stylesheet and no build step. Login lockout, idle sign-out, a security log, Content-Security-Policy headers, seasonal themes checked for readable contrast, backup and restore commands, and 124 automated tests.</p>
-  </article>
-</section>
-
-<section id="process" aria-labelledby="process-title">
-  <h2 class="sec-title" id="process-title">How a project works</h2>
-  <p class="sec-lead">No jargon. You see working software early, and we change it until it fits how your office works.</p>
-  <ol class="steps">
-    <li><h3>I look at your registers</h3><p>We sit together for an hour. I see how your office keeps records today and what slows you down.</p></li>
-    <li><h3>You try a demo</h3><p>You get a working demo shaped around your fees, bookings or stock, to click through with your staff before anything is final.</p></li>
-    <li><h3>I install and train</h3><p>The system goes on your office computer. I train your staff and move your existing records in.</p></li>
-    <li><h3>Backups and support</h3><p>Backups go to a USB drive every week, and I'm on WhatsApp when something needs changing.</p></li>
-  </ol>
-</section>
-
-<section id="about" aria-labelledby="about-title">
-  <div class="about">
-    <h2 class="sec-title" id="about-title">About me</h2>
     <div>
-      <p>I'm a full-stack developer from Pakistan and the founder of Nexora Software &amp; Web Solutions. I like building software for real offices: the kind that has to print a correct receipt on a busy Monday morning and still work when the internet is down.</p>
-      <p>Most of my work is in Python and Django, with careful attention to the parts that handle money: receipts that can't be edited, accounts that always balance, and backups you can actually restore.</p>
-      <ul class="facts">
-        <li><span>I build</span><span>School, travel agency and small-business systems, plus websites</span></li>
-        <li><span>Tools</span><span>Python, Django, SQLite, JavaScript, HTML and CSS, Bootstrap, Git</span></li>
-        <li><span>Languages</span><span>English and Urdu</span></li>
-        <li><span>Available for</span><span>Projects in Pakistan and remote work worldwide</span></li>
+      <h3 id="ifs-title">Ideal Future School website</h3>
+      <p class="one">The public website of a real school in Nowshera Virkan, in English and Urdu, with online admissions and an office panel the staff run themselves.</p>
+      <ul>
+        <li><b>Every page in both languages,</b> with proper right-to-left Nastaliq, switched in one tap.</li>
+        <li><b>Admission requests online,</b> tracked from new to admitted and exported to Excel.</li>
+        <li><b>Staff update it without a developer,</b> with separate roles for principal, office and content.</li>
+        <li><b>Hardened:</b> login lockout, idle sign-out, a security log and Content-Security-Policy headers.</li>
       </ul>
+      <dl class="facts">
+        <dt>Stack</dt><dd>Python, Django 5.2, SQLite, one stylesheet, no build step</dd>
+        <dt>Tests</dt><dd>124 automated</dd>
+      </dl>
+      <div class="ctas">
+        <a class="btn btn-solid" href="https://talharasool155.pythonanywhere.com" target="_blank" rel="noopener">Visit the website</a>
+      </div>
     </div>
+  </article>
   </div>
 </section>
 
-<section id="contact" aria-labelledby="contact-title">
-  <div class="contact">
+<section class="band" id="toolkit" aria-labelledby="kit-title">
+  <h2 class="sec-title" id="kit-title">Toolkit</h2>
+  <p class="sec-lead">What I reach for, and what I've shipped with it.</p>
+  <div class="kit">
+    <div><h3>Back end</h3><p>Python, Django and Django REST Framework. PostgreSQL and SQLite. Redis and Celery for background work. Ledgers that always balance.</p></div>
+    <div><h3>Front end</h3><p>TypeScript, React and Next.js. Plain HTML, CSS and JavaScript when a build step isn't worth it. English and Urdu, in both directions.</p></div>
+    <div><h3>3D on the web</h3><p>three.js and React Three Fiber. GLB models with Draco and Meshopt compression, checked by a pipeline before they ship.</p></div>
+    <div><h3>Quality and safety</h3><p>pytest, Vitest and Playwright. Permission checks on the server, security headers, audit logs, and backups I've actually restored.</p></div>
+  </div>
+</section>
+
+<section class="band" id="process" aria-labelledby="process-title">
+  <h2 class="sec-title" id="process-title">How a project runs</h2>
+  <p class="sec-lead">You see working software early, and we change it until it fits.</p>
+  <ol class="steps">
+    <li><h3>I learn how you work</h3><p>An hour together on how the work is done today and where it slows down.</p></li>
+    <li><h3>You try a demo</h3><p>A working demo shaped around your own data, to click through before anything is final.</p></li>
+    <li><h3>I ship and train</h3><p>The system goes live, your existing records move in, and your team learns it with me.</p></li>
+    <li><h3>I stay on call</h3><p>Backups run on a schedule, and I'm a message away when something needs to change.</p></li>
+  </ol>
+</section>
+
+<section class="band" id="contact" aria-labelledby="contact-title">
+  <div class="about">
     <div>
-      <h2 class="sec-title" id="contact-title">Tell me what your office tracks on paper today.</h2>
-      <p>Send a photo of your register or a short message. I'll reply with how it could work as software.</p>
+      <h2 class="sec-title" id="contact-title">Have something that should be software?</h2>
+      <p>I'm a full-stack developer from Pakistan and the founder of Nexora Software &amp; Web Solutions. I like the parts other people avoid: money that has to add up, permissions that have to hold, and backups that have to restore.</p>
+      <p class="dim">I work in English and Urdu, on projects in Pakistan and remotely worldwide. Send a short message about what you need and I'll reply with how I'd build it.</p>
     </div>
     <div class="links">
       <a class="wa" href="https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio" target="_blank" rel="noopener">
@@ -421,7 +378,7 @@ footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: fl
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2ZM8 19H5V9.5h3V19ZM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5ZM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.8 13 12.8 14.3V19h-3V9.5h2.8v1.3h.1a3.1 3.1 0 0 1 2.8-1.5c3 0 3.5 2 3.5 4.5V19Z"/></svg>
         <span><b>LinkedIn</b><small>in/talhazubair2401</small></span></a>
       <a href="https://www.fiverr.com/talhazubair110" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".9"/><text x="12" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#18213A">fi</text></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><text x="12" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="12" fill="#0C1030">fi</text></svg>
         <span><b>Fiverr</b><small>@talhazubair110</small></span></a>
       <a href="https://github.com/talhazubair2401" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .4 1 .2 2.2.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
@@ -429,12 +386,171 @@ footer { padding: 34px 0 48px; color: var(--ink-2); font-size: 14px; display: fl
     </div>
   </div>
 </section>
-</main>
 
 <footer>
-  <span>© 2026 Talha Zubair · Nexora Software &amp; Web Solutions</span>
+  <span>© 2026 Talha Zubair, Nexora Software &amp; Web Solutions</span>
   <span>Demo data on this page and in the live demos is fictional.</span>
 </footer>
 </div>
+
+<script>
+(function () {
+  "use strict";
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- console: scripted answers ---------- */
+  var A = {
+    build: { t: "Full-stack systems that carry real money and real records: a double-entry accounting engine for travel agencies, a fee and results system for schools, a bilingual school website, and a fashion storefront with a 3D product viewer.", l: [["See the work", "#work"]] },
+    best: { t: "For depth, AureVon: a Next.js storefront and a Django REST API with a three.js garment viewer, 256 backend tests and a security test on every staff endpoint. For something you can click right now, SafarPro has a live demo.", l: [["AureVon", "#aurevon"], ["SafarPro", "#safarpro"]] },
+    stack: { t: "Python, Django and Django REST Framework on PostgreSQL or SQLite, with Redis and Celery. TypeScript, React and Next.js at the front, three.js for 3D. Docker to run it, pytest, Vitest and Playwright to keep it honest.", l: [["Full toolkit", "#toolkit"]] },
+    tests: { t: "Everything ships with automated tests: 39 on SafarPro, 56 on School Office, 124 on the school website, and 256 backend tests plus 107 route-security cases on AureVon. Permissions are checked on the server, never only in the interface.", l: [["See the projects", "#work"]] },
+    hire: { t: "Yes. I take projects in Pakistan and remote work worldwide. Send a short message about what you need and I'll reply with how I'd build it.", l: [["Message me on WhatsApp", "https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio"], ["Email", "mailto:nexoraservices90@gmail.com"]] },
+    ai: { t: "No. This box is a few dozen lines of JavaScript picking from answers I wrote myself. I'd rather show you working code than a chatbot that guesses.", l: [["Read the code", "https://github.com/talhazubair2401/talhazubair2401.github.io"]] },
+    hello: { t: "I'm Talha Zubair, a full-stack developer from Pakistan. Ask me what I build, what I build it with, or pick a question below.", l: [] },
+    miss: { t: "I'm a small script, so I only know a handful of answers. Try one of the questions below, or ask the real Talha.", l: [["Message me on WhatsApp", "https://wa.me/923084538969?text=Assalam-o-Alaikum%20Talha%2C%20I%20saw%20your%20portfolio"]] }
+  };
+  var routes = [
+    ["ai", /\b(ai|a\.i|gpt|llm|model|chatbot|bot|claude|robot)\b/],
+    ["hire", /hire|availab|contact|price|cost|rate|freelanc|budget|whatsapp|email|reach/],
+    ["tests", /test|quality|secur|bug|safe|reliab/],
+    ["stack", /stack|tech|tool|language|framework|python|django|react|next|typescript|javascript|database|three/],
+    ["best", /best|strong|favou?rite|project|aurevon|safarpro|school|3d|demo|portfolio|work/],
+    ["build", /build|make|do you do|what do|service|software|develop/],
+    ["hello", /^(hi|hello|hey|salam|assalam|who)/]
+  ];
+  var log = document.getElementById("log"), timer = 0;
+
+  function answer(question, key) {
+    clearInterval(timer);
+    var item = A[key] || A.miss;
+    log.textContent = "";
+    var q = document.createElement("p"); q.className = "q"; q.textContent = question;
+    var a = document.createElement("p"); a.className = "a typing";
+    log.appendChild(q); log.appendChild(a);
+    function done() {
+      a.textContent = item.t; a.classList.remove("typing");
+      if (!item.l.length) return;
+      var go = document.createElement("p"); go.className = "go";
+      item.l.forEach(function (pair) {
+        var link = document.createElement("a"); link.textContent = pair[0]; link.href = pair[1];
+        if (pair[1].indexOf("http") === 0) { link.target = "_blank"; link.rel = "noopener"; }
+        go.appendChild(link);
+      });
+      log.appendChild(go);
+    }
+    if (calm) { done(); return; }
+    var words = item.t.split(" "), i = 0;
+    timer = setInterval(function () {
+      i += 1; a.textContent = words.slice(0, i).join(" ");
+      if (i >= words.length) { clearInterval(timer); done(); }
+    }, 38);
+  }
+  document.getElementById("chips").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (b) answer(b.textContent, b.dataset.k);
+  });
+  document.getElementById("ask").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = document.getElementById("q"), text = input.value.trim(); if (!text) return;
+    var low = text.toLowerCase(), key = "miss";
+    for (var i = 0; i < routes.length; i++) { if (routes[i][1].test(low)) { key = routes[i][0]; break; } }
+    answer(text, key); input.value = "";
+  });
+  answer("who is talha?", "hello");
+
+  /* ---------- project galleries ---------- */
+  document.querySelectorAll(".thumbs").forEach(function (row) {
+    row.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var media = row.parentNode, main = media.querySelector("img.main"), small = b.querySelector("img");
+      main.src = small.getAttribute("src"); main.alt = small.alt;
+      media.querySelector(".cap").textContent = b.dataset.cap;
+      row.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    });
+  });
+
+  /* ---------- hero: particles drifting through a flow field ---------- */
+  (function () {
+    var c = document.getElementById("field"), g = c.getContext("2d");
+    var W = 0, H = 0, pts = [], t = 0, mx = -9999, my = -9999, live = true, raf = 0;
+    function size() {
+      var r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0);
+      g.fillStyle = "#0C1030"; g.fillRect(0, 0, W, H);
+      var n = Math.round(Math.min(900, W * H / 1500)); pts = [];
+      for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, h: Math.random() });
+    }
+    function step() {
+      g.fillStyle = "rgba(12,16,48,.07)"; g.fillRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var a = (Math.sin(p.x * .0023 + t) + Math.cos(p.y * .0031 - t * .7) + Math.sin((p.x + p.y) * .0012 + t * .4)) * Math.PI;
+        var dx = Math.cos(a), dy = Math.sin(a);
+        var ux = p.x - mx, uy = p.y - my, dist = ux * ux + uy * uy;
+        if (dist < 26000) { var f = 1 - dist / 26000; dx += -uy / 160 * f * 4; dy += ux / 160 * f * 4; }
+        var nx = p.x + dx * 1.1, ny = p.y + dy * 1.1;
+        g.strokeStyle = p.h < .55 ? "rgba(148,134,255,.7)" : p.h < .93 ? "rgba(69,227,207,.6)" : "rgba(255,179,107,.6)";
+        g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(nx, ny); g.stroke();
+        p.x = nx; p.y = ny;
+        if (nx < 0 || nx > W || ny < 0 || ny > H || Math.random() < .003) { p.x = Math.random() * W; p.y = Math.random() * H; }
+      }
+      t += .0016;
+    }
+    function loop() { if (live) step(); raf = requestAnimationFrame(loop); }
+    size();
+    if (calm) { for (var k = 0; k < 160; k++) step(); return; }
+    window.addEventListener("resize", size);
+    c.parentNode.addEventListener("pointermove", function (e) { var r = c.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+    c.parentNode.addEventListener("pointerleave", function () { mx = my = -9999; });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { live = en[0].isIntersecting; }).observe(c);
+    loop();
+  })();
+
+  /* ---------- AureVon: a garment form you can turn ---------- */
+  (function () {
+    var c = document.getElementById("lathe"), g = c.getContext("2d");
+    var W = 0, H = 0, rot = .6, vel = .006, drag = false, lastX = 0, seen = false, pts = [];
+    // a dress silhouette, revolved: radius at each height from neck (0) to hem (1)
+    function radius(v) {
+      if (v < .08) return .1 + v * .4;                     // neck
+      if (v < .2) return .13 + (v - .08) * 1.9;             // shoulders
+      if (v < .42) return .36 - (v - .2) * .75;             // down to the waist
+      return .195 + Math.pow((v - .42) / .58, 1.25) * .48;  // skirt flare
+    }
+    for (var i = 0; i <= 44; i++) for (var j = 0; j < 56; j++) {
+      var v = i / 44, a = j / 56 * Math.PI * 2, fold = v > .42 ? 1 + Math.sin(a * 7) * .07 * (v - .42) / .58 : 1;
+      pts.push([radius(v) * fold * Math.cos(a), v - .5, radius(v) * fold * Math.sin(a), v]);
+    }
+    function size() {
+      var r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; c.width = W * d; c.height = H * d; g.setTransform(d, 0, 0, d, 0, 0); draw();
+    }
+    function draw() {
+      g.clearRect(0, 0, W, H);
+      var s = H * .7, cx = W / 2, cy = H / 2, co = Math.cos(rot), si = Math.sin(rot);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i], x = p[0] * co - p[2] * si, z = p[0] * si + p[2] * co, k = 1 / (1.9 - z);
+        var near = (z + .7) / 1.4;
+        g.fillStyle = p[3] < .42 ? "rgba(148,134,255," + (.25 + near * .75) + ")" : "rgba(69,227,207," + (.2 + near * .8) + ")";
+        var r = .7 + near * 1.3;
+        g.fillRect(cx + x * s * k * 1.9 - r / 2, cy + p[1] * s * k * 1.9 - r / 2, r, r);
+      }
+    }
+    function loop() {
+      if (seen && !drag) { rot += vel; vel += (.006 - vel) * .02; draw(); }
+      requestAnimationFrame(loop);
+    }
+    c.addEventListener("pointerdown", function (e) { drag = true; lastX = e.clientX; c.setPointerCapture(e.pointerId); });
+    c.addEventListener("pointermove", function (e) { if (!drag) return; vel = (e.clientX - lastX) * .01; rot += vel; lastX = e.clientX; draw(); });
+    c.addEventListener("pointerup", function () { drag = false; if (calm) vel = 0; });
+    c.addEventListener("pointercancel", function () { drag = false; });
+    window.addEventListener("resize", size);
+    size();
+    if (calm) return;
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { seen = en[0].isIntersecting; }).observe(c);
+    else seen = true;
+    loop();
+  })();
+})();
+</script>
 </body>
 </html>
